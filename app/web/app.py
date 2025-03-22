@@ -9,7 +9,6 @@ from pywebio.output import *
 from app.web.views.About import about_pop_window
 from app.web.views.Document import api_document_pop_window
 from app.web.views.Downloader import downloader_pop_window
-from app.web.views.EasterEgg import a
 from app.web.views.ParseVideo import parse_video
 from app.web.views.Shortcuts import ios_pop_window
 from app.web.views.ViewsUtils import ViewsUtils
@@ -21,10 +20,7 @@ with open(config_path, 'r', encoding='utf-8') as file:
 
 pywebio_config(theme=_config['Web']['PyWebIO_Theme'],
                title=_config['Web']['Tab_Title'],
-               description=_config['Web']['Description'],
-               js_file=[
-                   _config['Web']['Live2D_JS'] if _config['Web']['Live2D_Enable'] else None,
-               ])
+               description=_config['Web']['Description'])
 
 
 class MainView:
@@ -274,7 +270,7 @@ class MainView:
             put_html(f"""
             <div class="header-container">
                 <img src="{favicon_url}" class="logo" alt="logo">
-                <h1>TikTok & Douyin Downloader</h1>
+                <h1>TikTok 다운로더</h1>
                 <p>워터마크 없이 비디오를 다운로드하세요</p>
             </div>
             """)
@@ -307,8 +303,8 @@ class MainView:
 
             # 메인 컨텐츠 (div로 구현)
             put_html('<div class="custom-card"><div class="custom-card-title">동영상 다운로드</div>')
-            put_text("TikTok 또는 Douyin 링크를 붙여넣고 다운로드하세요:")
-            video_url = input(placeholder="https://vm.tiktok.com/... 또는 https://v.douyin.com/...",
+            put_text("TikTok 링크를 붙여넣고 다운로드하세요:")
+            video_url = input(placeholder="https://vm.tiktok.com/...",
                               required=True, name="video_url")
             put_button("동영상 다운로드", onclick=lambda: parse_video(video_url), color='primary', outline=False)
             put_html("</div>")
@@ -359,8 +355,8 @@ class MainView:
             # 푸터
             put_html("""
             <footer>
-                <p>© 2024 TikTok & Douyin Downloader - 개인 사용 목적으로만 사용해주세요</p>
-                <p><a href="https://github.com/Evil0ctal/Douyin_TikTok_Download_API" target="_blank">GitHub 프로젝트</a></p>
+                <p>© 2024 TikTok 다운로더 - 개인 사용 목적으로만 사용해주세요</p>
+                <p><a href="https://github.com/Evil0ctal/TikTok_Download_API" target="_blank">GitHub 프로젝트</a></p>
             </footer>
             """)
 
